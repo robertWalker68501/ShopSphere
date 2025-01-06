@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { APP_NAME } from '@/lib/constants';
+import ModeToggle from './ModeToggle';
 
 const Header = () => {
   return (
@@ -18,7 +19,8 @@ const Header = () => {
               alt={`${APP_NAME} logo`}
               width={48}
               height={48}
-              priority={true}
+              placeholder='blur'
+              blurDataURL={'/assets/images/logo.svg'}
             />
             <span className='ml-3 hidden text-2xl font-bold lg:block'>
               {APP_NAME}
@@ -27,6 +29,8 @@ const Header = () => {
         </div>
 
         <div className='space-x-2'>
+          <ModeToggle />
+
           <Button
             asChild
             variant='ghost'
@@ -36,10 +40,7 @@ const Header = () => {
             </Link>
           </Button>
 
-          <Button
-            asChild
-            variant='ghost'
-          >
+          <Button asChild>
             <Link href='/sign-in'>
               <UserIcon /> Sign in
             </Link>
